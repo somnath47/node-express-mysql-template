@@ -2,12 +2,19 @@ const AuthModelClass = function () {
 
     this.fetchAllUsers = async () => {
 
-        const [rows, fields] = await this.DB.conn.execute(
-			'SELECT * FROM `users` WHERE `name` = ? AND `age` > ?', 
-			['Morty', 14]
-		);
+		try{
+			const [rows, fields] = await this.DB.conn.execute(
+				'SELECT * FROM `users` WHERE `name` = ? AND `age` > ?', 
+				['Morty', 14]
+			);
 
-        return true
+			return true
+		} catch (e) {
+			console.log(e)
+		}
+        
+
+        
     }
     
 }
